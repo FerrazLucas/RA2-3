@@ -1,0 +1,648 @@
+{
+  "tipo": "PROGRAM",
+  "gramatica": {
+    "gramatica": [
+      "PROGRAMA -> START BLOCO END",
+      "BLOCO -> COMANDO BLOCO | ε",
+      "COMANDO -> EXPRESSAO | IF_CMD | IFELSE_CMD | WHILE_CMD",
+      "IF_CMD -> ( CONDICAO COMANDO IF )",
+      "IFELSE_CMD -> ( CONDICAO COMANDO COMANDO IFELSE )",
+      "WHILE_CMD -> ( CONDICAO COMANDO WHILE )",
+      "EXPRESSAO -> NUM | ID | ( ID ) | ( NUM RES ) | ( EXPRESSAO ID ) | ( EXPRESSAO EXPRESSAO OP )"
+    ],
+    "first": {
+      "PROGRAMA": [
+        "START"
+      ],
+      "BLOCO": [
+        "COMANDO",
+        "ε"
+      ],
+      "COMANDO": [
+        "EXPRESSAO",
+        "IF_CMD",
+        "IFELSE_CMD",
+        "WHILE_CMD"
+      ],
+      "IF_CMD": [
+        "IF"
+      ],
+      "IFELSE_CMD": [
+        "IFELSE"
+      ],
+      "WHILE_CMD": [
+        "WHILE"
+      ],
+      "EXPRESSAO": [
+        "NUM",
+        "ID",
+        "LPAREN"
+      ]
+    },
+    "follow": {
+      "PROGRAMA": [
+        "$"
+      ],
+      "BLOCO": [
+        "END"
+      ],
+      "COMANDO": [
+        "COMANDO",
+        "END"
+      ],
+      "IF_CMD": [
+        "COMANDO",
+        "END"
+      ],
+      "IFELSE_CMD": [
+        "COMANDO",
+        "END"
+      ],
+      "WHILE_CMD": [
+        "COMANDO",
+        "END"
+      ],
+      "EXPRESSAO": [
+        "COMANDO",
+        "END",
+        "IF",
+        "IFELSE",
+        "WHILE",
+        "ID",
+        "OP",
+        "RES",
+        "RPAREN"
+      ]
+    },
+    "tabela": {
+      "PROGRAMA": {
+        "START": "START BLOCO END"
+      },
+      "BLOCO": {
+        "COMANDO": "COMANDO BLOCO",
+        "END": "ε"
+      },
+      "COMANDO": {
+        "EXPRESSAO": "EXPRESSAO",
+        "IF": "IF_CMD",
+        "IFELSE": "IFELSE_CMD",
+        "WHILE": "WHILE_CMD"
+      }
+    }
+  },
+  "comandos": [
+    {
+      "linha": 2,
+      "resultado": 1,
+      "arvore": {
+        "tipo": "MEM_SET",
+        "nome": "X",
+        "expr": {
+          "tipo": "NUM",
+          "valor": "5"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "5"
+        ],
+        [
+          "ID",
+          "X"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 3,
+      "resultado": 2,
+      "arvore": {
+        "tipo": "MEM_GET",
+        "nome": "X"
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "ID",
+          "X"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 4,
+      "resultado": 3,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "+",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "3"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "4"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "3"
+        ],
+        [
+          "NUM",
+          "4"
+        ],
+        [
+          "OP",
+          "+"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 5,
+      "resultado": 4,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "*",
+        "esq": {
+          "tipo": "RES_REF",
+          "n": 1
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "2"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "1"
+        ],
+        [
+          "RES",
+          "RES"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "NUM",
+          "2"
+        ],
+        [
+          "OP",
+          "*"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 6,
+      "resultado": 5,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "-",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "10"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "4"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "10"
+        ],
+        [
+          "NUM",
+          "4"
+        ],
+        [
+          "OP",
+          "-"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 7,
+      "resultado": 6,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "/",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "7"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "2"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "7"
+        ],
+        [
+          "NUM",
+          "2"
+        ],
+        [
+          "OP",
+          "/"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 8,
+      "resultado": 7,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "|",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "7"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "2"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "7"
+        ],
+        [
+          "NUM",
+          "2"
+        ],
+        [
+          "OP",
+          "|"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 9,
+      "resultado": 8,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "%",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "7"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "3"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "7"
+        ],
+        [
+          "NUM",
+          "3"
+        ],
+        [
+          "OP",
+          "%"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 10,
+      "resultado": 9,
+      "arvore": {
+        "tipo": "BINOP",
+        "op": "^",
+        "esq": {
+          "tipo": "NUM",
+          "valor": "2"
+        },
+        "dir": {
+          "tipo": "NUM",
+          "valor": "3"
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "2"
+        ],
+        [
+          "NUM",
+          "3"
+        ],
+        [
+          "OP",
+          "^"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 11,
+      "resultado": 10,
+      "arvore": {
+        "tipo": "IF_CMD",
+        "cond": {
+          "tipo": "NUM",
+          "valor": "1"
+        },
+        "entao": {
+          "tipo": "MEM_SET",
+          "nome": "Y",
+          "expr": {
+            "tipo": "NUM",
+            "valor": "9"
+          }
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "1"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "9"
+        ],
+        [
+          "ID",
+          "Y"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "IF",
+          "IF"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 12,
+      "resultado": 11,
+      "arvore": {
+        "tipo": "IFELSE_CMD",
+        "cond": {
+          "tipo": "NUM",
+          "valor": "0"
+        },
+        "entao": {
+          "tipo": "BINOP",
+          "op": "+",
+          "esq": {
+            "tipo": "NUM",
+            "valor": "1"
+          },
+          "dir": {
+            "tipo": "NUM",
+            "valor": "2"
+          }
+        },
+        "senao": {
+          "tipo": "BINOP",
+          "op": "+",
+          "esq": {
+            "tipo": "NUM",
+            "valor": "3"
+          },
+          "dir": {
+            "tipo": "NUM",
+            "valor": "4"
+          }
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "0"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "1"
+        ],
+        [
+          "NUM",
+          "2"
+        ],
+        [
+          "OP",
+          "+"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "3"
+        ],
+        [
+          "NUM",
+          "4"
+        ],
+        [
+          "OP",
+          "+"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "IFELSE",
+          "IFELSE"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    },
+    {
+      "linha": 13,
+      "resultado": 12,
+      "arvore": {
+        "tipo": "WHILE_CMD",
+        "cond": {
+          "tipo": "NUM",
+          "valor": "0"
+        },
+        "corpo": {
+          "tipo": "MEM_SET",
+          "nome": "Z",
+          "expr": {
+            "tipo": "NUM",
+            "valor": "8"
+          }
+        }
+      },
+      "tokens": [
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "0"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "LPAREN",
+          "("
+        ],
+        [
+          "NUM",
+          "8"
+        ],
+        [
+          "ID",
+          "Z"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ],
+        [
+          "WHILE",
+          "WHILE"
+        ],
+        [
+          "RPAREN",
+          ")"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+Linha 1:
+  (LPAREN, ()
+  (START, START)
+  (RPAREN, ))
+
+Linha 2:
+  (LPAREN, ()
+  (NUM, 5)
+  (ID, X)
+  (RPAREN, ))
+
+Linha 3:
+  (LPAREN, ()
+  (ID, X)
+  (RPAREN, ))
+
+Linha 4:
+  (LPAREN, ()
+  (NUM, 3)
+  (NUM, 4)
+  (OP, +)
+  (RPAREN, ))
+
+Linha 5:
+  (LPAREN, ()
+  (LPAREN, ()
+  (NUM, 1)
+  (RES, RES)
+  (RPAREN, ))
+  (NUM, 2)
+  (OP, *)
+  (RPAREN, ))
+
+Linha 6:
+  (LPAREN, ()
+  (NUM, 10)
+  (NUM, 4)
+  (OP, -)
+  (RPAREN, ))
+
+Linha 7:
+  (LPAREN, ()
+  (NUM, 7)
+  (NUM, 2)
+  (OP, /)
+  (RPAREN, ))
+
+Linha 8:
+  (LPAREN, ()
+  (NUM, 7)
+  (NUM, 2)
+  (OP, |)
+  (RPAREN, ))
+
+Linha 9:
+  (LPAREN, ()
+  (NUM, 7)
+  (NUM, 3)
+  (OP, %)
+  (RPAREN, ))
+
+Linha 10:
+  (LPAREN, ()
+  (NUM, 2)
+  (NUM, 3)
+  (OP, ^)
+  (RPAREN, ))
+
+Linha 11:
+  (LPAREN, ()
+  (LPAREN, ()
+  (NUM, 1)
+  (RPAREN, ))
+  (LPAREN, ()
+  (NUM, 9)
+  (ID, Y)
+  (RPAREN, ))
+  (IF, IF)
+  (RPAREN, ))
+
+Linha 12:
+  (LPAREN, ()
+  (LPAREN, ()
+  (NUM, 0)
+  (RPAREN, ))
+  (LPAREN, ()
+  (NUM, 1)
+  (NUM, 2)
+  (OP, +)
+  (RPAREN, ))
+  (LPAREN, ()
+  (NUM, 3)
+  (NUM, 4)
+  (OP, +)
+  (RPAREN, ))
+  (IFELSE, IFELSE)
+  (RPAREN, ))
+
+Linha 13:
+  (LPAREN, ()
+  (LPAREN, ()
+  (NUM, 0)
+  (RPAREN, ))
+  (LPAREN, ()
+  (NUM, 8)
+  (ID, Z)
+  (RPAREN, ))
+  (WHILE, WHILE)
+  (RPAREN, ))
+
+Linha 14:
+  (LPAREN, ()
+  (END, END)
+  (RPAREN, ))
+
